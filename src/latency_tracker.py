@@ -24,11 +24,17 @@ def __load_historic(file_name: str) -> dict:
     pass
 
 
-def __save_historic(results: dict, file_name):
+def __save_historic(results: dict, file_name: str) -> None:
     """
     Save the results dictionary to json
     """
-    pass
+    # convert datetime keys to string format
+    converted = {}
+    for key in results:
+        converted[str(key)] = results[key]
+    # save converted
+    with open(file_name, 'w+') as f:
+        json.dump(converted, f)
 
 
 def ping():
